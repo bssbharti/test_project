@@ -1,0 +1,79 @@
+﻿<!DOCTYPE html>
+<html ng-app="app">
+<head>
+    <meta charset="utf-8" />
+    <title>Let's find your true partner</title>
+    <link rel="stylesheet" href="./app-content/css/bootstrap.css" />
+    <link href="app-content/css/app.css" rel="stylesheet" />
+    <link rel="stylesheet" href="app-content/css/font-awesome.min.css">
+    <link rel="stylesheet" href="app-content/css/ain-css.css">
+    <link rel="stylesheet" href="app-content/css/style.css">
+    <link rel="stylesheet" href="app-content/css/responsive.css">
+    <link rel="stylesheet" href="app-content/css/datatables.css">
+    <link rel="stylesheet" href="app-content/css/angular-toastr.css">
+    <link rel="stylesheet" href="app-content/css/jquery.filer.css">
+    <link rel="stylesheet" href="app-content/css/bootstrap.datepicker.css">
+
+<link href='//fonts.googleapis.com/css?family=Oswald:300,400,700' rel='stylesheet' type='text/css'>
+<link href='//fonts.googleapis.com/css?family=Ubuntu:300,400,500,700' rel='stylesheet' type='text/css'>
+    <link href="app-content/css/style1.css" rel='stylesheet' type='text/css' />
+
+
+</head>
+<body>
+    <div class="navbar navbar-inverse-blue navbar" ng-controller='navCtrl'>
+      <div class="navbar-inner">
+        <div class="container">
+           <div class="navigation">
+             <nav id="colorNav">
+               <ul>
+                <li class="green">
+                    <a class="icon-home"></a>
+                    <ul>
+                        <li ng-if='!user.id'><a href='/#!/login'>Login</a></li>
+                        <li ng-if='!user.id'><a href='/#!/login?r'>Register</a></li>
+                        <li ng-if='user.id'><a href='/#!/profile'>My Profile</a></li>
+                        <li ng-if='user.id'><a href='' ng-click='logout()'>Logout</a></li>
+                    </ul>
+                </li>
+               </ul>
+             </nav>
+           </div>
+           <a class="brand" ><img src="app-content/images/logo.png" alt="logo"></a>
+           <div class="pull-right">
+           </div>
+          <div class="clearfix"> </div>
+        </div> <!-- end container -->
+      </div> <!-- end navbar-inner -->
+    </div> <!-- end navbar-inverse-blue -->
+    <div ng-view></div>
+    <script src="./app-content/js/jquery.js"></script>
+    <script src="./app-content/js/jqueryui.js"></script>
+    <script src="./app-content/js/angular.js"></script>
+    <script src="./app-content/js/angular-route.js"></script>
+    <script src="./app-content/js/angular-cookies.js"></script>
+    <script src="./app-content/js/jdatatables.js"></script>
+    <script src="./app-content/js/datatables.min.js"></script>
+    <script src="./app-content/js/angular-cookies.js"></script>
+    <script src="./app-content/js/angular-toastr.js"></script>
+    <script src="./app-content/js/jquery.easing.js"></script>
+    <script src="./app-content/js/underscore-min.js"></script>
+    <script src="./app-content/js/ngfileupload.shim.js"></script>
+    <script src="./app-content/js/ngfileupload.js"></script>
+    <script src="./app-content/js/moment.js"></script>
+    <script src="./app-content/js/ngfileupload.shim.js"></script>
+    <script src="./app-content/js/ngfileupload.js"></script>
+    <script src="./app-content/js/moment.js"></script>
+    <script src="./app-content/js/bootstrap.datepicker.js"></script>
+    <script src="./app.js"></script>
+    <script src="./app-services/authentication.service.js"></script>
+    <script src="./app-services/flash.service.js"></script>
+    <script type="text/javascript" src="app-content/js/jquery.flexisel.js"></script>
+    <script src="./app-services/user.service.js"></script>
+    <script src="./admin/admin.controller.js"></script>
+    <script src="./profile/profile.controller.js"></script>
+    <script src="./main/mainController.controller.js"></script>    
+    <script src="./login/login.controller.js"></script>
+    <script src="./add-profile/addnew.controller.js"></script>
+</body>
+</html>

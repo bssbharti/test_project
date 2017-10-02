@@ -1,0 +1,141 @@
+<br>
+<div class="row"><a ng-click="gohome()" class="btn btn-primary col-md-1 ">Home</a>
+
+<a ng-click="logout()" class="btn btn-primary col-md-1 col-md-offset-10">Logout</a></p></div>
+<br>
+<div class="container">
+
+    
+
+    <h1 class="well" style="color: black;">Registration Form</h1>
+
+      <div class="alert alert-success alert-dismissable fade in" ng-show='success'>
+        <strong>Successfully Inserted!</strong>
+      </div>
+
+      <div class="alert alert-danger alert-dismissable fade in" ng-show='error'>
+        <strong>{{error}}</strong>
+      </div>
+
+
+    <div class="col-lg-12 well">
+    <div class="row">
+                <form name='profileForm'>
+                    <div class="col-sm-12">
+
+                        <div class="row">
+                            <div class="col-sm-6 form-group">
+                                <label>First Name</label>
+                                <input type="text" placeholder="Enter First Name " class="form-control" required ng-model="profile.first_name">
+                            </div>
+                            <div class="col-sm-6 form-group">
+                                <label>Last Name</label>
+                                <input type="text" required placeholder="Enter Last Name " class="form-control" ng-model="profile.last_name">
+                            </div>
+                        </div>     
+
+                        <div class="row">
+                            <div class="col-sm-6 form-group">
+                                <label>Father's Name</label>
+                                <input required type="text" placeholder="Enter Father's Name " class="form-control" ng-model="profile.father_name">
+                            </div>
+                            <div class="col-sm-6 form-group">
+                                <label>Mother's Name</label>
+                                <input type="text" required placeholder="Enter Mother's Name" class="form-control" ng-model="profile.mother_name">
+                            </div>
+                        </div>     
+
+
+                        <div class="form-group">
+                            <label>Address</label>
+                            <textarea required ng-model="profile.address" placeholder="Enter Address Here.." rows="3" class="form-control"></textarea>
+                        </div>  
+                        <div class="row">
+                            <div class="col-sm-4 form-group">
+                                <label>City</label>
+                                <input required ng-model="profile.city" type="text" placeholder="Enter City Name Here.." class="form-control">
+                            </div>  
+                            <div class="col-sm-4 form-group">
+                                <label>State</label>
+                                <input required type="text" ng-model="profile.state" placeholder="Enter State Name Here.." class="form-control">
+                            </div>  
+                            <div class="col-sm-4 form-group">
+                                <label>Zip</label>
+                                <input required type="number" ng-model="profile.zip" placeholder="Enter Zip Code Here.." class="form-control">
+                            </div>      
+                        </div>                
+                    <div class="form-group">
+                        <label>Phone Number</label>
+                        <input required type="number" ng-model="profile.number" placeholder="Enter Phone Number Here.." class="form-control">
+                    </div>      
+                    <div class="form-group">
+                        <label>Email Address</label>
+                        <input required type="text" ng-model="profile.email_id" placeholder="Enter Email Address Here.." class="form-control">
+                    </div>  
+
+                    <div style="width:100%;padding:10px;border: 2px dashed #C8CBCE;text-align: center;margin-top: 20px;" ngf-drop="fileAdded($files)"  ng-model="files" ngf-drag-over-class="'drop-dragover'">
+                      <div>
+                        <div>
+                          <md-icon class="material-icons">content_paste</md-icon>
+                        </div>
+                        <div>
+                          <h3>Drop or paste files here</h3><span>or</span>
+                        </div>
+                        <md-button ng-click="resetTimesheet()" class="md-primary md-raised" ngf-select="fileAdded($files)" ngf-multiple="true">
+                          <md-icon class="material-icons" size="40">open_in_browser</md-icon>
+                          Browse files
+                        </md-button>
+                      </div>
+                    </div>
+                    <div>
+                      <ul class="jFiler-items-list jFiler-items-grid clearfix" style="list-style-type: none;padding: 0;margin: 10px 0;">
+                        <li class="jFiler-item {{repeatAnimation}}" ng-repeat="file in bugAttachments">
+                          <div class="jFiler-item-container">
+                            <div class="jFiler-item-inner">
+                              <div class="jFiler-item-thumb" style="width:150px;height:114px">
+                                <div class="jFiler-item-status"></div>
+                                <div class="jFiler-item-thumb-overlay">
+                                  <div class="jFiler-item-info">
+                                    <div style="display:table-cell;vertical-align: middle;">
+                                      <span class="jFiler-item-title"><b>{{file.name}}</b></span>
+                                      <span class="jFiler-item-others">{{getFileSize(file.size)}}</span>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="jFiler-item-thumb-image">
+                                  <img ngf-src="!file.$error && file" ng-if="!file.uploaded">
+                                  <img ng-src="{{file.path}}" ng-if="file.uploaded">
+                                  <span ng-if="getExtension(file.name) == 'docx'" class="jFiler-icon-file f-file f-file-ext-docx" style="background-color: rgb(64, 144, 36);">.docx</span>
+                                  <span ng-if="getExtension(file.name) == 'doc'" class="jFiler-icon-file f-file f-file-ext-doc" style="background-color: rgb(56, 78, 83);">.doc</span>
+                                  <span ng-if="getExtension(file.name) == 'pptx'" class="jFiler-icon-file f-file f-file-ext-pptx" style="background-color: rgb(132, 33, 200);">.pptx</span>
+                                  <span ng-if="getExtension(file.name) == 'xls'" class="jFiler-icon-file f-file f-file-ext-xlsx" style="background-color: rgb(89, 22, 5);">.xls</span>
+                                  <span ng-if="getExtension(file.name) == 'xlsx'" class="jFiler-icon-file f-file f-file-ext-xlsx" style="background-color: rgb(89, 22, 5);">.xlsx</span>
+                                  <span ng-if="getExtension(file.name) == 'pdf'" class="jFiler-icon-file f-file f-file-ext-pdf" style="background-color: rgb(242, 60, 15);">.pdf</span>
+                                  <span ng-if="getExtension(file.name) == 'csv'" class="jFiler-icon-file f-file f-file-ext-csv" style="background-color: rgb(6, 129, 32);">.csv</span>
+                                  <span ng-if="getExtension(file.name) == 'ppt'" class="jFiler-icon-file f-file f-file-ext-ppt" style="background-color: rgb(116, 157, 39);">.ppt</span>
+                                  <span ng-if="getExtension(file.name) == 'txt'" class="jFiler-icon-file f-file f-file-ext-txt" style="background-color: rgb(112, 156, 39);">.txt</span>
+                                </div>
+                              </div>
+                              <div class="jFiler-item-assets jFiler-row">
+                                <span ng-click="$parent.primary_img = $index" ng-class="{'green_primary' : primary_img == $index}" class="glyphicon glyphicon-pushpin"></span>
+                                
+                                <ul class="list-inline pull-right">
+                                  <li>
+                                  <span ng-click="removeAttachment($index)" class="glyphicon glyphicon-remove"></span></li>
+                                </ul>
+                              </div>
+                            </div>
+                          </div>
+                        </li>
+                      </ul>
+                    </div>
+
+                    <br>
+                    <button type="Submit" class="btn btn-lg btn-info col-md-2 col-md-offset-5" ng-click="addUser()">Submit</button>                   
+                    </div>
+                </form> 
+                </div>
+    </div>
+    </div>
+
+
